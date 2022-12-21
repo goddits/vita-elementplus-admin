@@ -14,6 +14,24 @@ const router = createRouter({
         title: '登录'
       },
       component: () => import('@/views/Login.vue')
+    },
+    {
+      path: '/home',
+      name: '主页',
+      meta: {
+        title: '主页'
+      },
+      component: () => import('@/Layout/index.vue'),
+      redirect: '/dashboard',
+      children: [
+        {
+          path: '/dashboard',
+          meta: {
+            title: '首页'
+          },
+          component: () => import('@/components/dashboard/index.vue')
+        }
+      ]
     }
   ]
 })

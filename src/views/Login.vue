@@ -55,7 +55,7 @@ const submitForm = (formEl: any) => {
   if (!formEl) return
   formEl.validate((valid: any) => {
     if (valid) {
-      router.push('/dashboard')
+      router.push('/home')
       ElMessage.success('登录成功')
     } else {
       console.log('error submit!')
