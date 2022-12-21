@@ -74,6 +74,7 @@ class RequestHttp {
     this.service.interceptors.response.use(
       (response: AxiosResponse) => {
         // 解构
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { data, config } = response
         if (data.code === RequestEnums.OVERDUE) {
           // 登录信息失效，应跳转到登录页面，并清空本地的token
