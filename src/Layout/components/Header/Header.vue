@@ -6,6 +6,9 @@
     <el-icon class="icon-btn" v-else @click="store.closeCol"
       ><Expand
     /></el-icon>
+    <el-breadcrumb separator="/dashboard">
+    <el-breadcrumb-item  :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
+  </el-breadcrumb>
     <div class="r-header">
       <el-icon class="icon-btn"><RefreshRight /></el-icon>
       <el-icon class="icon-btn"><FullScreen /></el-icon>
@@ -52,8 +55,9 @@ const store = useStore()
 }
 .icon-btn {
   width: 50px;
-  height: 80px;
+  height: 60px;
   cursor: pointer;
+  margin-right: 4px;
 }
 .icon-btn:hover {
   background: #f7f8f9;

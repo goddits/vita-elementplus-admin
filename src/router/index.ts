@@ -27,7 +27,7 @@ const router = createRouter({
           path: '/dashboard',
           meta: {
             title: '首页',
-            isMnue:true
+            isMenu: true
           },
           component: () => import('@/components/dashboard/Dashboard.vue')
         },
@@ -35,7 +35,7 @@ const router = createRouter({
           path: '/docs',
           meta: {
             title: '文档',
-            isMnue:true
+            isMenu: true
           },
           component: () => import('@/components/docs/Docs.vue')
         },
@@ -43,24 +43,24 @@ const router = createRouter({
           path: '/permission',
           meta: {
             title: '权限',
-            isMnue:true,
+            isMenu: true
           },
-          redirect:'/permission/page',
-          children:[
-              {
-                path: '/permission/page',
-                meta: {
-                  title: '页面权限',
-                },
-                component: () => import('@/components/permission/page/Page.vue')
+          redirect: '/permission/page',
+          children: [
+            {
+              path: '/permission/page',
+              meta: {
+                title: '页面权限'
               },
-              {
-                path: '/permission/role',
-                meta: {
-                  title: '角色权限',
-                },
-                component: () => import('@/components/permission/role/Role.vue')
+              component: () => import('@/components/permission/page/Page.vue')
+            },
+            {
+              path: '/permission/role',
+              meta: {
+                title: '角色权限'
               },
+              component: () => import('@/components/permission/role/Role.vue')
+            }
           ]
         }
       ]

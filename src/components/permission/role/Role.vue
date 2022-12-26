@@ -1,13 +1,7 @@
 <template>
-  <div>
-    角色控制
-  </div>
+  <div>角色控制</div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

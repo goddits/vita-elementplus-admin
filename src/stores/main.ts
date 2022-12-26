@@ -4,18 +4,18 @@ import { defineStore } from 'pinia'
 export const useStore = defineStore('main', () => {
   let isCollapse = ref(false)
   let asideWidth = ref('')
+  const routepath = ref(null)
 
   const handleAsideWidth = () => {
-    switch(isCollapse.value){
+    switch (isCollapse.value) {
       case false:
-        asideWidth.value = 220+'px';
-        break;
-        case true:
-        asideWidth.value = 70+'px';
-        break;
-
+        asideWidth.value = 220 + 'px'
+        break
+      case true:
+        asideWidth.value = 60 + 'px'
+        break
     }
-    console.log(asideWidth.value);
+    console.log(asideWidth.value)
   }
 
   const closeCol = () => {
@@ -24,11 +24,10 @@ export const useStore = defineStore('main', () => {
     handleAsideWidth()
   }
 
-
-
   return {
     isCollapse,
     asideWidth,
+    routepath,
     closeCol,
     handleAsideWidth
   }

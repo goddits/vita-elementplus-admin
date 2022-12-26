@@ -17,7 +17,7 @@
           {{ item.meta.title }}
         </template>
         <el-menu-item v-for="ele in item.children" :index="ele.path">
-          {{ ele.meta.title }}
+          {{ ele.meta?.title }}
         </el-menu-item>
       </el-sub-menu>
 
@@ -35,11 +35,12 @@ import { useRouter } from 'vue-router'
 import { Menu as IconMenu } from '@element-plus/icons-vue'
 const store = useStore()
 const router = useRouter()
-const menuList = router.getRoutes().filter((v) => v.meta.isMnue)
+const menuList = router.getRoutes().filter((v) => v.meta.isMenu)
 console.log('菜单', menuList)
 
 const getMenu = (e: any) => {
   console.log(e)
+  store.routepath = e
 }
 </script>
 
@@ -50,22 +51,7 @@ const getMenu = (e: any) => {
   border: 0;
   box-shadow: 2px 2px;
   transition: all 0.3s;
-  background-color: #304156;
+  background-color: #33d4f4;
 }
-.el-menu .el-menu-item {
-  background-color: #304156;
-  color: #bfcbd9;
-  font-size: 16px;
-}
-// .el-menu .el-menu-item:hover{
-//   background: #0c72ee;
-// }
-.el-menu .el-sub-menu {
-  background-color: #304156;
-  color: #bfcbd9;
-  font-size: 16px;
-}
-// .el-menu .el-sub-menu:hover{
-//   background: #0c72ee;
-// }
+
 </style>

@@ -33,7 +33,8 @@ const store = useStore()
 
 .el-header {
   padding-left: 0;
-  height: 80px;
+  height: 60px;
+  border-bottom: 1px solid #ccc;
   // background: #09aded;
 }
 .el-aside {
@@ -41,6 +42,7 @@ const store = useStore()
   transition: all 0.2s;
 }
 .el-main {
+  padding: 0;
   background: #fff;
 }
 </style>
