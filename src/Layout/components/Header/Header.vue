@@ -1,9 +1,13 @@
 <template>
   <div class="f-header">
-    <el-icon class="icon-btn" v-if="!store.isCollapse" @click="store.closeCol"><Fold /></el-icon>
-    <el-icon class="icon-btn" v-else @click="store.closeCol"><Expand /></el-icon>
-    <el-icon class="icon-btn"><RefreshRight /></el-icon>
+    <el-icon class="icon-btn" v-if="!store.isCollapse" @click="store.closeCol"
+      ><Fold
+    /></el-icon>
+    <el-icon class="icon-btn" v-else @click="store.closeCol"
+      ><Expand
+    /></el-icon>
     <div class="r-header">
+      <el-icon class="icon-btn"><RefreshRight /></el-icon>
       <el-icon class="icon-btn"><FullScreen /></el-icon>
       <el-icon class="icon-btn"><Aim /></el-icon>
       <el-dropdown class="dropdown">
@@ -20,7 +24,7 @@
           <el-dropdown-menu>
             <el-dropdown-item>修改密码</el-dropdown-item>
             <el-dropdown-item>退出登录</el-dropdown-item>
-            <el-dropdown-item>Github</el-dropdown-item>
+            <el-dropdown-item>项目地址</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -29,11 +33,9 @@
 </template>
 
 <script setup lang="ts">
-import {useStore} from '@/stores/main'
+import { useStore } from '@/stores/main'
 
 const store = useStore()
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -54,13 +56,13 @@ const store = useStore()
   cursor: pointer;
 }
 .icon-btn:hover {
-  background: #1e6ef8;
+  background: #f7f8f9;
 }
 .f-header .dropdown {
   display: flex;
   cursor: pointer;
 }
-.f-header .el-dropdown-link{
+.f-header .el-dropdown-link {
   display: flex;
   justify-content: center;
   align-items: center;

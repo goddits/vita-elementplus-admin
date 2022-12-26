@@ -1,58 +1,71 @@
 <template>
   <el-menu
-    default-active="2"
     class="el-menu-vertical-demo"
     :collapse="store.isCollapse"
+    :collapse-transition="false"
+    unique-opened
+    @select="getMenu"
     router
   >
-    <el-sub-menu index="1">
-      <template #title>
-        <el-icon><location /></el-icon>
-        <span>Navigator One</span>
-      </template>
-      <el-menu-item-group>
-        <template #title><span>Group One</span></template>
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="Group Two">
-        <el-menu-item index="1-3">item three</el-menu-item>
-      </el-menu-item-group>
-      <el-sub-menu index="1-4">
-        <template #title><span>item four</span></template>
-        <el-menu-item index="1-4-1">item one</el-menu-item>
+    <template v-for="(item, index) in menuList">
+      <el-sub-menu
+        v-if="item.children && item.children.length > 0"
+        :index="item.meta.title"
+      >
+        <template #title>
+          <el-icon><icon-menu /></el-icon>
+          {{ item.meta.title }}
+        </template>
+        <el-menu-item v-for="ele in item.children" :index="ele.path">
+          {{ ele.meta.title }}
+        </el-menu-item>
       </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="2">
-      <el-icon><icon-menu /></el-icon>
-      <template #title>Navigator Two</template>
-    </el-menu-item>
-    <el-menu-item index="3" disabled>
-      <el-icon><document /></el-icon>
-      <template #title>Navigator Three</template>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <el-icon><setting /></el-icon>
-      <template #title>Navigator Four</template>
-    </el-menu-item>
+
+      <el-menu-item v-else :index="item.path">
+        <el-icon><icon-menu /></el-icon>
+        <template #title>{{ item.meta.title }}</template>
+      </el-menu-item>
+    </template>
   </el-menu>
 </template>
 
 <script setup lang="ts">
-import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting
-} from '@element-plus/icons-vue'
-
-import {useStore} from '@/stores/main'
+import { useStore } from '@/stores/main'
+import { useRouter } from 'vue-router'
+import { Menu as IconMenu } from '@element-plus/icons-vue'
 const store = useStore()
+const router = useRouter()
+const menuList = router.getRoutes().filter((v) => v.meta.isMnue)
+console.log('菜单', menuList)
 
+const getMenu = (e: any) => {
+  console.log(e)
+}
 </script>
 
 <style lang="scss" scoped>
 .el-menu {
+  width: 100%;
   height: 100vh;
+  border: 0;
+  box-shadow: 2px 2px;
+  transition: all 0.3s;
+  background-color: #304156;
 }
+.el-menu .el-menu-item {
+  background-color: #304156;
+  color: #bfcbd9;
+  font-size: 16px;
+}
+// .el-menu .el-menu-item:hover{
+//   background: #0c72ee;
+// }
+.el-menu .el-sub-menu {
+  background-color: #304156;
+  color: #bfcbd9;
+  font-size: 16px;
+}
+// .el-menu .el-sub-menu:hover{
+//   background: #0c72ee;
+// }
 </style>

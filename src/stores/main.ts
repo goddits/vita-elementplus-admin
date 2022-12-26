@@ -1,27 +1,35 @@
-import {ref} from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useStore = defineStore('main', () => {
-
   let isCollapse = ref(false)
-  let asideWidth ='250px'
+  let asideWidth = ref('')
 
-  const closeCol = () =>{
-    isCollapse.value = !isCollapse.value
-    console.log('操作了',isCollapse);
+  const handleAsideWidth = () => {
+    switch(isCollapse.value){
+      case false:
+        asideWidth.value = 220+'px';
+        break;
+        case true:
+        asideWidth.value = 70+'px';
+        break;
 
-  }
-
-  const handleAsideWidth = () =>{
-    if(isCollapse.value){
-      asideWidth = '250px'? '250px' : '60px'
     }
-
+    console.log(asideWidth.value);
   }
+
+  const closeCol = () => {
+    isCollapse.value = !isCollapse.value
+    console.log('操作了', isCollapse)
+    handleAsideWidth()
+  }
+
+
 
   return {
     isCollapse,
+    asideWidth,
     closeCol,
-    handleAsideWidth,
+    handleAsideWidth
   }
 })
